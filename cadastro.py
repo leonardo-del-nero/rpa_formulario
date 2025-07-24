@@ -6,20 +6,20 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-Options = Options()
-opcoes.add_argument("--star-maximized")
+options = Options()
+options.add_argument("--star-maximized")
 
-url_form = ...
+url_forms = 'https://rpachallenge.com/'
 
 try:
-    df = pd.read_excel('dados.xlsx')
+    df = pd.read_excel('data.xlsx')
 except FileNotFoundError:
     print(f'O arquivo Excel não foi encontrado.')
     exit()
 
-servico = Service(ChromeDriverManager().install())
-navegador = webdriver.Chrome(service=servico)
+service = Service(ChromeDriverManager().install())
+browser = webdriver.Chrome(service=service)
 
-navegador.get(url_form)
+browser.get(url_forms)
 time.sleep(3)
 
