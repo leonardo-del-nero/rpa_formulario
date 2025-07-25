@@ -23,49 +23,56 @@ browser = webdriver.Chrome(service=service)
 browser.get(url_forms)
 time.sleep(3)
 
+buttom_start = browser.find_element(By.XPATH, "//button[text()='Start']")
+
 for index, line in df.iterrows():
     try:
-        first_name = browser.find_element(By.ID, 'T10u6')
+        first_name = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelFirstName']")
         first_name.clear()
         first_name.send_keys(line['First name'])
 
         time.sleep(0.3)
 
-        last_name = browser.find_element(By.ID, 'FoQlW')
+        last_name = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelLastName']")
         last_name.clear()
         last_name.send_keys(line['Last name'])
 
         time.sleep(0.3)
 
-        email = browser.find_element(By.ID, 'XKiCY')
+        email = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelEmail']")
         email.clear()
         email.send_keys(line['Email'])
 
         time.sleep(0.3)
 
-        company_name = browser.find_element(By.ID, 'J91D6')
+        company_name = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelCompanyName']")
         company_name.clear()
-        company_name.send_key(line['Company name'])
+        company_name.send_keys(line['Company name'])
 
         time.sleep(0.3)
 
-        role_in_company = browser.find_element(By.Id, 'RLSnx')
+        role_in_company = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelRole']")
         role_in_company.clear()
         role_in_company.send_keys(line['Role in company'])
 
         time.sleep(0.3 )
 
-        phone_number = browser.find_element(By.ID, 'QcjX3')
+        phone_number = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelPhone']")
         phone_number.clear()
         phone_number.send_keys(line['Phone number'])
 
         time.sleep(0.3)
 
-        address = browser.find_element(By.Id, 'r4HzH')
+        address = browser.find_element(By.CSS_SELECTOR, "input[ng-reflect-name='labelAddress']")
         address.clear()
         address.send_keys(line['Address'])
 
         time.sleep(0.3)
+
+        buttom_submit = browser.find_element(By.CSS_SELECTOR, "input[type='submit'][value='Submit']")
+        buttom_submit.click()
+
+        time.sleep(1.5)
 
     except Exception as e:
         print(f'Unespected error: {e}')
